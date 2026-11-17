@@ -5,7 +5,7 @@ import { Button } from '../common/Button';
 
 export const HeroSection = ({ onOpenDemoModal }) => {
   return (
-    <section id="home" className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-[#F5F3EA]">
+    <section id="home" className="relative pt-40 sm:pt-44 lg:pt-52 pb-20 lg:pb-28 overflow-hidden bg-[#F5F3EA]">
       {/* Subtle Organic Background Shapes */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#E8E2D5]/60 rounded-full blur-3xl pointer-events-none -mr-40 -mt-20" />
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-[#879B83]/10 rounded-full blur-3xl pointer-events-none" />

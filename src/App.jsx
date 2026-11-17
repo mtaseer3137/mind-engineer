@@ -12,7 +12,6 @@ import { ContactSection } from './components/sections/ContactSection';
 import { Footer } from './components/common/Footer';
 import { DemoNoticeModal } from './components/common/DemoNoticeModal';
 import { CourseModal } from './components/common/CourseModal';
-import { Info } from 'lucide-react';
 
 export function App() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
@@ -31,15 +30,7 @@ export function App() {
   return (
     <div className="min-h-screen bg-[#F5F3EA] text-[#292D29] flex flex-col font-sans selection:bg-[#879B83]/30 selection:text-[#354B3B]">
       
-      {/* Top Academic Demonstration Project Banner */}
-      <div className="bg-[#354B3B] text-[#F5F3EA] border-b border-[#879B83]/30 py-2 px-4 text-center text-xs sm:text-sm flex items-center justify-center gap-2">
-        <Info className="w-4 h-4 text-[#879B83] shrink-0" />
-        <span>
-          <strong className="text-white">Academic Project:</strong> Recreated for university assignment demonstration. Brand: <strong className="text-[#879B83]">Mind Engineer</strong>.
-        </span>
-      </div>
-
-      {/* 1. Natural & Organic Responsive Header */}
+      {/* 1. Natural & Organic Responsive Header with Integrated Banner */}
       <Navbar onOpenDemoModal={() => setDemoModalOpen(true)} />
 
       {/* 2. Main Content Sections */}

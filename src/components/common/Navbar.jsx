@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { Menu, X, ArrowUpRight, MessageCircle, Info } from 'lucide-react';
 import { Logo } from './Logo';
 
 export const Navbar = ({ onOpenDemoModal }) => {
@@ -27,7 +27,7 @@ export const Navbar = ({ onOpenDemoModal }) => {
       }
 
       const sections = navLinks.map(link => link.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 220;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -44,79 +44,98 @@ export const Navbar = ({ onOpenDemoModal }) => {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#F5F3EA]/95 backdrop-blur-md py-3.5 shadow-sm border-b border-[#879B83]/20'
-            : 'bg-transparent py-5'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Mind Engineer Organic Brand Logo */}
-            <a href="#home" className="group focus:outline-none">
-              <Logo size="md" showTagline={true} />
-            </a>
-
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 px-3 py-1.5 rounded-full bg-[#E8E2D5]/70 border border-[#879B83]/25 shadow-sm">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.href.substring(1);
-                return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className={`relative px-4 py-1.5 text-xs xl:text-sm font-sans font-medium rounded-full transition-colors duration-200 ${
-                      isActive
-                        ? 'text-[#354B3B] font-semibold'
-                        : 'text-[#5A615A] hover:text-[#354B3B]'
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeOrganicNavPill"
-                        className="absolute inset-0 rounded-full bg-[#FFFFFF] border border-[#879B83]/30 shadow-sm"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{link.name}</span>
-                  </a>
-                );
-              })}
-            </nav>
-
-            {/* CTA Buttons */}
-            <div className="hidden sm:flex items-center gap-3">
-              {/* WhatsApp Demo Button */}
-              <button
-                type="button"
-                onClick={onOpenDemoModal}
-                className="hidden xl:inline-flex items-center gap-2 text-xs font-sans font-medium px-3.5 py-2 rounded-xl text-[#354B3B] bg-[#879B83]/20 hover:bg-[#879B83]/30 border border-[#879B83]/30 transition-all duration-200"
-                title="WhatsApp (Demo Mode)"
-              >
-                <MessageCircle className="w-3.5 h-3.5 text-[#6D8169]" />
-                <span>WhatsApp (Demo)</span>
-              </button>
-
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans font-medium px-4 py-2.5 rounded-xl text-[#F5F3EA] bg-[#354B3B] hover:bg-[#2B3E31] shadow-sm hover:shadow-md transition-all duration-200 active:scale-95"
-              >
-                <span>Consultation</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-[#E8E2D5] border border-[#879B83]/30 text-[#354B3B] hover:bg-[#DED6C7] focus:outline-none"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+      {/* Unified Fixed Top Header: Banner on Top + Navbar Directly Below */}
+      <header className="fixed top-0 left-0 right-0 z-40 w-full flex flex-col transition-all duration-300">
+        
+        {/* Academic Demonstration Top Banner */}
+        <div className="w-full bg-[#354B3B] text-[#F5F3EA] border-b border-[#879B83]/30 py-2 px-4 text-center text-xs sm:text-sm flex items-center justify-center gap-2 relative z-50 shadow-xs">
+          <Info className="w-4 h-4 text-[#879B83] shrink-0" />
+          <span className="leading-tight">
+            <strong className="text-white">Academic Project:</strong> Recreated for university assignment demonstration. Brand: <strong className="text-[#879B83]">Mind Engineer</strong>.
+          </span>
         </div>
+
+        {/* Main Navigation Bar */}
+        <nav
+          className={`w-full transition-all duration-300 ${
+            isScrolled
+              ? 'bg-[#F5F3EA]/95 backdrop-blur-md py-3 shadow-md border-b border-[#879B83]/25'
+              : 'bg-[#F5F3EA] py-4 border-b border-[#879B83]/15'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between gap-3 xl:gap-6">
+              
+              {/* Logo - Always fully visible, never clipped or collided */}
+              <div className="shrink-0">
+                <a href="#home" className="group focus:outline-none block">
+                  <Logo size="md" showTagline={true} />
+                </a>
+              </div>
+
+              {/* Desktop Navigation Links */}
+              <div className="hidden lg:flex items-center justify-center shrink-0">
+                <div className="flex items-center gap-0.5 xl:gap-1.5 px-2.5 xl:px-3 py-1.5 rounded-full bg-[#E8E2D5]/70 border border-[#879B83]/25 shadow-sm">
+                  {navLinks.map((link) => {
+                    const isActive = activeSection === link.href.substring(1);
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.href}
+                        className={`relative px-2.5 xl:px-3.5 py-1.5 text-xs xl:text-sm font-sans font-medium rounded-full transition-colors duration-200 whitespace-nowrap ${
+                          isActive
+                            ? 'text-[#354B3B] font-semibold'
+                            : 'text-[#5A615A] hover:text-[#354B3B]'
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            layoutId="activeOrganicNavPill"
+                            className="absolute inset-0 rounded-full bg-[#FFFFFF] border border-[#879B83]/30 shadow-sm"
+                            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                          />
+                        )}
+                        <span className="relative z-10">{link.name}</span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Right CTA Actions */}
+              <div className="hidden sm:flex items-center gap-2 xl:gap-3 shrink-0">
+                {/* WhatsApp Demo Button - Responsive sizing so it never collides */}
+                <button
+                  type="button"
+                  onClick={onOpenDemoModal}
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-sans font-medium h-9 px-2.5 xl:px-3.5 rounded-xl text-[#354B3B] bg-[#879B83]/20 hover:bg-[#879B83]/30 border border-[#879B83]/30 transition-all duration-200 shrink-0"
+                  title="WhatsApp (Demo Mode)"
+                >
+                  <MessageCircle className="w-4 h-4 text-[#354B3B] shrink-0" />
+                  <span className="hidden xl:inline whitespace-nowrap">WhatsApp (Demo)</span>
+                </button>
+
+                {/* Consultation Button */}
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs sm:text-sm font-sans font-medium h-9 px-3.5 sm:px-4 rounded-xl text-[#F5F3EA] bg-[#354B3B] hover:bg-[#2B3E31] shadow-sm hover:shadow-md transition-all duration-200 active:scale-95 whitespace-nowrap shrink-0"
+                >
+                  <span>Consultation</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+              {/* Mobile Hamburger Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 rounded-xl bg-[#E8E2D5] border border-[#879B83]/30 text-[#354B3B] hover:bg-[#DED6C7] focus:outline-none shrink-0"
+                aria-label="Toggle Navigation Menu"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </nav>
       </header>
 
       {/* Mobile Drawer Menu */}
