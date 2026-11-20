@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Info, Mail, Phone, MapPin, MessageCircle } from 'lucide-react';

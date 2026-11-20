@@ -1,11 +1,15 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeader } from '../common/SectionHeader';
 import { siteConfig } from '../../data/siteConfig';
-import { Mail, Phone, MapPin, MessageCircle, CheckCircle, Send, Info } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, CheckCircle, Send, Info, Loader2, AlertCircle } from 'lucide-react';
 
 export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,9 +18,33 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
     message: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to submit inquiry to database.');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setErrorMessage(err.message || 'An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -140,10 +168,10 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     <CheckCircle className="w-6 h-6" />
                   </div>
                   <h4 className="font-serif text-xl font-bold text-[#354B3B] mb-2">
-                    Inquiry Simulation Successful
+                    Inquiry Received & Recorded
                   </h4>
                   <p className="font-sans text-sm text-[#5A615A] leading-relaxed max-w-md mx-auto mb-6">
-                    Thank you, <strong className="text-[#354B3B]">{formData.name}</strong>. Your test submission for <em className="text-[#354B3B]">{formData.interest}</em> has been processed in demonstration mode.
+                    Thank you, <strong className="text-[#354B3B]">{formData.name}</strong>. Your inquiry regarding <em className="text-[#354B3B]">{formData.interest}</em> has been securely stored in the PostgreSQL database.
                   </p>
                   <button
                     type="button"
@@ -239,12 +267,29 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     />
                   </div>
 
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl text-sm font-sans font-medium text-[#F5F3EA] bg-[#354B3B] hover:bg-[#2B3E31] transition-all shadow-md shadow-[#354B3B]/15 active:scale-[0.99] flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl text-sm font-sans font-medium text-[#F5F3EA] bg-[#354B3B] hover:bg-[#2B3E31] transition-all shadow-md shadow-[#354B3B]/15 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    <span>Submit Demonstration Inquiry</span>
-                    <Send className="w-4 h-4" />
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Saving to Database...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Demonstration Inquiry</span>
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}

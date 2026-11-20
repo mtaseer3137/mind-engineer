@@ -1,6 +1,9 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, MessageCircle, Info } from 'lucide-react';
+import { Menu, X, ArrowUpRight, MessageCircle, Info, User } from 'lucide-react';
 import { Logo } from './Logo';
 
 export const Navbar = ({ onOpenDemoModal }) => {
@@ -103,16 +106,26 @@ export const Navbar = ({ onOpenDemoModal }) => {
               </div>
 
               {/* Right CTA Actions */}
-              <div className="hidden sm:flex items-center gap-2 xl:gap-3 shrink-0">
+              <div className="hidden sm:flex items-center gap-2 xl:gap-2.5 shrink-0">
+                {/* Sign In / Portal Link */}
+                <Link
+                  href="/login"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-sans font-medium h-9 px-2.5 xl:px-3 rounded-xl text-[#354B3B] hover:text-[#2B3E31] bg-[#E8E2D5]/70 hover:bg-[#E8E2D5] border border-[#879B83]/30 transition-all duration-200 shrink-0"
+                  title="Academic Portal Login"
+                >
+                  <User className="w-3.5 h-3.5 text-[#354B3B]" />
+                  <span className="whitespace-nowrap">Sign In</span>
+                </Link>
+
                 {/* WhatsApp Demo Button - Responsive sizing so it never collides */}
                 <button
                   type="button"
                   onClick={onOpenDemoModal}
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-sans font-medium h-9 px-2.5 xl:px-3.5 rounded-xl text-[#354B3B] bg-[#879B83]/20 hover:bg-[#879B83]/30 border border-[#879B83]/30 transition-all duration-200 shrink-0"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-sans font-medium h-9 px-2.5 xl:px-3 rounded-xl text-[#354B3B] bg-[#879B83]/20 hover:bg-[#879B83]/30 border border-[#879B83]/30 transition-all duration-200 shrink-0"
                   title="WhatsApp (Demo Mode)"
                 >
                   <MessageCircle className="w-4 h-4 text-[#354B3B] shrink-0" />
-                  <span className="hidden xl:inline whitespace-nowrap">WhatsApp (Demo)</span>
+                  <span className="hidden 2xl:inline whitespace-nowrap">WhatsApp (Demo)</span>
                 </button>
 
                 {/* Consultation Button */}
@@ -190,6 +203,14 @@ export const Navbar = ({ onOpenDemoModal }) => {
               </div>
 
               <div className="flex flex-col gap-3 pt-6 border-t border-[#879B83]/20">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl text-sm font-sans font-medium text-[#354B3B] bg-[#E8E2D5] hover:bg-[#DED6C7] border border-[#879B83]/30 transition-colors shadow-sm"
+                >
+                  <User className="w-4 h-4 text-[#354B3B]" />
+                  <span>Sign In to Academic Portal</span>
+                </Link>
                 <button
                   type="button"
                   onClick={() => {
