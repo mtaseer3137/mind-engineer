@@ -43,10 +43,10 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', '"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['var(--font-dm-sans)', '"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['var(--font-playfair)', '"Playfair Display"', 'serif'],
-        body: ['var(--font-dm-sans)', '"DM Sans"', 'sans-serif']
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
+        body: ['"DM Sans"', 'sans-serif']
       },
       boxShadow: {
         'organic': '0 4px 20px -2px rgba(41, 45, 41, 0.05)',

@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { getDb, initDb } from '../../../../lib/db';
 import { hashPassword, signToken } from '../../../../lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request) {
   try {
     const body = await request.json();
