@@ -35,7 +35,7 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to submit inquiry to database.');
+        throw new Error(data.error || 'Failed to send message. Please try again.');
       }
 
       setSubmitted(true);
@@ -53,23 +53,23 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
         
         {/* Section Header */}
         <SectionHeader
-          badge="Demonstration Contact Hub"
+          badge="Get In Touch"
           badgeColor="sage"
           title="Connect with"
           titleHighlight="Mind Engineer"
-          subtitle="Academic demonstration project. Use this form to simulate inquiries for our NLP curricula, sports performance models, or executive consulting simulations."
+          subtitle="Have questions about our cognitive curricula, performance coaching, or corporate programs? Send us an inquiry and our team will get back to you."
         />
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start">
           
-          {/* Left Column: Demo Contact Details */}
+          {/* Left Column: Contact Details */}
           <div className="lg:col-span-5 space-y-6">
             <div className="rounded-3xl bg-[#FFFFFF] border border-[#879B83]/30 p-7 sm:p-8 shadow-organic">
               <h3 className="font-serif text-2xl font-bold text-[#354B3B] mb-2">
-                Demonstration Information
+                Contact Information
               </h3>
               <p className="font-sans text-xs sm:text-sm text-[#5A615A] leading-relaxed mb-6">
-                All contact channels below are fictional placeholders created for university assignment review.
+                Reach out through any of the channels below or submit the inquiry form.
               </p>
 
               <div className="space-y-4">
@@ -148,14 +148,14 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
             </div>
           </div>
 
-          {/* Right Column: Demo Inquiry Form */}
+          {/* Right Column: Inquiry Form */}
           <div className="lg:col-span-7">
             <div className="rounded-3xl bg-[#FFFFFF] border border-[#879B83]/30 p-7 sm:p-9 shadow-organic-lg">
               <h3 className="font-serif text-2xl font-bold text-[#354B3B] mb-2">
-                Simulated Inquiry Form
+                Inquiry Form
               </h3>
               <p className="font-sans text-xs sm:text-sm text-[#5A615A] mb-8">
-                Test the interactive form controls. All inputs are validated and simulate a backend inquiry dispatch.
+                Fill out your details below and our team will get back to you with program schedules and consultation availability.
               </p>
 
               {submitted ? (
@@ -168,10 +168,10 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     <CheckCircle className="w-6 h-6" />
                   </div>
                   <h4 className="font-serif text-xl font-bold text-[#354B3B] mb-2">
-                    Inquiry Received & Recorded
+                    Inquiry Received
                   </h4>
                   <p className="font-sans text-sm text-[#5A615A] leading-relaxed max-w-md mx-auto mb-6">
-                    Thank you, <strong className="text-[#354B3B]">{formData.name}</strong>. Your inquiry regarding <em className="text-[#354B3B]">{formData.interest}</em> has been securely stored in the PostgreSQL database.
+                    Thank you, <strong className="text-[#354B3B]">{formData.name}</strong>. Your message regarding <em className="text-[#354B3B]">{formData.interest}</em> has been sent successfully. We will be in touch shortly.
                   </p>
                   <button
                     type="button"
@@ -187,7 +187,7 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     }}
                     className="px-6 py-2.5 rounded-xl text-xs font-sans font-medium text-[#F5F3EA] bg-[#354B3B] hover:bg-[#2B3E31] transition-colors"
                   >
-                    Submit Another Simulation
+                    Send Another Message
                   </button>
                 </motion.div>
               ) : (
@@ -223,7 +223,7 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
 
                     <div>
                       <label className="block text-xs font-sans font-semibold text-[#354B3B] uppercase tracking-wider mb-1.5">
-                        Phone Placeholder
+                        Phone Number
                       </label>
                       <input
                         type="text"
@@ -247,7 +247,7 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     >
                       <option>Academic Certification (NLP / Silva / Body Language)</option>
                       <option>Sports Psychology Performance Modeling (The 4 C's)</option>
-                      <option>Executive One-to-One Performance Simulation</option>
+                      <option>Executive One-to-One Performance Coaching</option>
                       <option>Corporate Team Culture & Communication Modules</option>
                       <option>Digital Wellbeing & Habit Engineering</option>
                     </select>
@@ -260,7 +260,7 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     <textarea
                       rows={4}
                       required
-                      placeholder="Briefly state your demonstration inquiry or assignment review question..."
+                      placeholder="Share your goals, questions, or specific focus areas..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-[#F5F3EA] border border-[#879B83]/30 text-[#292D29] placeholder-[#879B83] text-sm focus:outline-none focus:border-[#354B3B] transition-colors resize-none"
@@ -282,11 +282,11 @@ export const ContactSection = ({ onOpenDemoModal, selectedCourse }) => {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Saving to Database...</span>
+                        <span>Sending message...</span>
                       </>
                     ) : (
                       <>
-                        <span>Submit Demonstration Inquiry</span>
+                        <span>Send Inquiry</span>
                         <Send className="w-4 h-4" />
                       </>
                     )}

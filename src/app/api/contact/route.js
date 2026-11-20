@@ -61,7 +61,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: true,
-        message: 'Your inquiry has been successfully received and saved to the database. Thank you for connecting with Mind Engineer!',
+        message: 'Your inquiry has been successfully received. Thank you for contacting Mind Engineer!',
         inquiry: inserted[0],
       },
       { status: 201 }

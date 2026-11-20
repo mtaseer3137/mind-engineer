@@ -62,10 +62,8 @@ export default function SignUpPage() {
         throw new Error(data.error || 'Failed to create account. Please try again.');
       }
 
-      setSuccessMessage('Account created successfully in PostgreSQL! Redirecting...');
-      setTimeout(() => {
-        router.push('/');
-      }, 1400);
+      setSuccessMessage('Account created successfully!');
+      router.push('/');
     } catch (err) {
       setErrorMessage(err.message || 'An error occurred during registration.');
     } finally {
@@ -228,7 +226,7 @@ export default function SignUpPage() {
                 </div>
               </div>
 
-              {/* Academic Demonstration acknowledgement */}
+              {/* Terms acknowledgement */}
               <div className="pt-1">
                 <label className="flex items-start gap-2.5 cursor-pointer">
                   <input
@@ -238,7 +236,7 @@ export default function SignUpPage() {
                     className="mt-0.5 rounded border-[#879B83] text-[#354B3B] focus:ring-[#354B3B]"
                   />
                   <span className="text-[11px] font-sans text-[#5A615A] leading-tight">
-                    I understand this account is created for academic coursework and demo evaluation.
+                    I agree to the Mind Engineer terms of service and privacy policy.
                   </span>
                 </label>
               </div>
@@ -251,11 +249,11 @@ export default function SignUpPage() {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Registering Account...</span>
+                    <span>Creating account...</span>
                   </>
                 ) : (
                   <>
-                    <span>Create Academic Account</span>
+                    <span>Create Account</span>
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}

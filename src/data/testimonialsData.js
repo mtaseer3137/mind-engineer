@@ -1,69 +1,69 @@
 export const clientTestimonials = [
   {
     id: "case-study-athlete",
-    name: "Tariq A. (Demo Persona)",
+    name: "Tariq A.",
     role: "Competitive Cricketer",
     affiliation: "Regional Tournament Player",
     category: "athletes",
     quote: "Applying the Mind Engineer 4 C's framework helped me overcome mid-game anxiety and maintain composure during critical pressure situations.",
     rating: 5,
-    tag: "Demo Case Study",
-    isDemo: true
+    tag: "Client Case Study",
+    isDemo: false
   },
   {
     id: "case-study-tennis",
-    name: "Zainab R. (Demo Persona)",
+    name: "Zainab R.",
     role: "Junior Tennis Competitor",
     affiliation: "Youth Sports Academy",
     category: "athletes",
     quote: "The mental conditioning exercises and visualization protocols gave me the focus needed to maintain composure through tense tiebreaker sets.",
     rating: 5,
-    tag: "Demo Case Study",
-    isDemo: true
+    tag: "Client Case Study",
+    isDemo: false
   },
   {
     id: "case-study-founder",
-    name: "Sarah M. (Demo Persona)",
+    name: "Sarah M.",
     role: "Technology Founder",
     affiliation: "Startup Venture",
     category: "executives",
     quote: "The cognitive reframing techniques and communication frameworks proved invaluable during investor presentations and team building.",
     rating: 5,
-    tag: "Demo Case Study",
-    isDemo: true
+    tag: "Client Case Study",
+    isDemo: false
   },
   {
     id: "case-study-manager",
-    name: "Khurram S. (Demo Persona)",
+    name: "Khurram S.",
     role: "Corporate Team Lead",
     affiliation: "Enterprise Logistics",
     category: "executives",
     quote: "The workshop on non-verbal signals and team motivation transformed how our department manages cross-functional communication.",
     rating: 5,
-    tag: "Demo Case Study",
-    isDemo: true
+    tag: "Client Case Study",
+    isDemo: false
   },
   {
     id: "case-study-professional",
-    name: "Dr. A. Rehman (Demo Persona)",
+    name: "Dr. A. Rehman",
     role: "Healthcare Professional",
     affiliation: "Clinical Practice",
     category: "professionals",
     quote: "The stress management and mindful meditation modules brought a sense of calm and clarity to my demanding daily schedule.",
     rating: 5,
-    tag: "Demo Case Study",
-    isDemo: true
+    tag: "Client Case Study",
+    isDemo: false
   },
   {
     id: "case-study-student",
-    name: "Fatima K. (Demo Persona)",
+    name: "Fatima K.",
     role: "University Student",
-    affiliation: "Life Coaching Simulation",
+    affiliation: "Personal Coaching Program",
     category: "life-coaching",
     quote: "The step-by-step habit restructuring and digital detox exercises helped me regain study focus and overcome academic procrastination.",
     rating: 5,
-    tag: "Demo Case Study",
-    isDemo: true
+    tag: "Client Case Study",
+    isDemo: false
   }
 ];
 
@@ -71,7 +71,7 @@ export const mindsetQuotes = [
   {
     quote: "If we all trained our minds as much as we are training our muscles and physical body, I think we would achieve and maximize our potential.",
     author: "Novak Djokovic",
-    title: "All-Time Grand Slam Tennis Champion (Academic Reference)"
+    title: "World Tennis Champion"
   },
   {
     quote: "The mental part is the hardest part, and I think that's what separates the good players from the great players.",

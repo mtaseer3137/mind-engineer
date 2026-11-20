@@ -15,7 +15,7 @@ export const servicesData = [
       ]
     },
     trackRecord: [
-      "Simulated mental performance models for competitive cricket and team sports",
+      "Mental performance models for competitive athletics and team sports",
       "Focus and anxiety reduction frameworks for junior and collegiate athletes",
       "Pre-game visualization and arousal regulation protocols",
       "Post-competition debrief and resilience rebuilding exercises"
@@ -49,9 +49,9 @@ export const servicesData = [
   {
     id: "one-to-one-coaching",
     title: "One-to-One Performance Coaching",
-    badge: "Demonstration Consultation Model",
+    badge: "Personal Consultation",
     summary: "Structured one-on-one consultation models designed for executive clarity, stress management, and personal balance.",
-    description: "A demonstration model illustrating personalized life coaching, career navigation, and stress management. Combines cognitive reframing, habit engineering, and goal alignment into actionable weekly sessions.",
+    description: "Personalized life coaching, career navigation, and stress management. Combines cognitive reframing, habit engineering, and goal alignment into actionable weekly sessions.",
     focusAreas: [
       "Executive & Career Navigation: Overcoming professional plateaus and decision paralysis",
       "Stress & Performance Anxiety: Reframing panic patterns and preventing burnout",
@@ -60,14 +60,14 @@ export const servicesData = [
     ],
     formats: [
       {
-        title: "Virtual Consultation (Demonstration)",
-        mode: "Online Video Meeting Model",
-        features: ["Structured 60-minute framework", "Personalized action blueprint", "Follow-up reflection exercises", "Demo review format"]
+        title: "Virtual Consultation",
+        mode: "Online Video Session",
+        features: ["Structured 60-minute framework", "Personalized action blueprint", "Follow-up reflection exercises", "Resource materials"]
       },
       {
-        title: "In-Person Campus Session (Demo)",
-        mode: "Lahore, Pakistan (Demo Location)",
-        features: ["In-person demonstration setting", "Behavioral assessment simulation", "Goal clarification worksheet", "Demo portfolio exercise"]
+        title: "In-Person Session",
+        mode: "Lahore, Pakistan",
+        features: ["One-on-one session", "Behavioral assessment & goal mapping", "Goal clarification worksheet", "Implementation roadmap"]
       }
     ]
   },

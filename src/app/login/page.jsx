@@ -39,23 +39,13 @@ export default function LoginPage() {
         throw new Error(data.error || 'Failed to log in. Please check your credentials.');
       }
 
-      setSuccessMessage(`Welcome back, ${data.user?.name || 'Scholar'}! Redirecting to dashboard...`);
-      setTimeout(() => {
-        router.push('/');
-      }, 1200);
+      setSuccessMessage(`Welcome back, ${data.user?.name || ''}!`);
+      router.push('/');
     } catch (err) {
       setErrorMessage(err.message || 'An error occurred during authentication.');
     } finally {
       setLoading(false);
     }
-  };
-
-  // Quick autofill helper for assignment reviewers
-  const handleAutofillDemo = () => {
-    setFormData({
-      email: 'student@example.com',
-      password: 'DemoPassword2026!',
-    });
   };
 
   return (
@@ -149,14 +139,9 @@ export default function LoginPage() {
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-sans font-semibold text-[#354B3B] uppercase tracking-wider">
-                    Password
-                  </label>
-                  <span className="text-[11px] text-[#879B83] font-medium cursor-pointer hover:text-[#354B3B]" onClick={handleAutofillDemo}>
-                    Autofill Demo?
-                  </span>
-                </div>
+                <label className="block text-xs font-sans font-semibold text-[#354B3B] uppercase tracking-wider mb-1.5">
+                  Password
+                </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#879B83]">
                     <Lock className="w-4 h-4" />
@@ -188,7 +173,7 @@ export default function LoginPage() {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Authenticating...</span>
+                    <span>Signing in...</span>
                   </>
                 ) : (
                   <>

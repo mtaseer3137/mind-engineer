@@ -85,7 +85,7 @@ export const ServicesSection = ({ onSelectService }) => {
                     href="#contact"
                     className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#354B3B] hover:text-[#879B83] transition-colors"
                   >
-                    <span>Simulation Details</span>
+                    <span>Program Details</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
